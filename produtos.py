@@ -38,6 +38,8 @@ try:
         nom = str(nome_b)
         vl = float(preco)
         prod = [(rf, cd, nom, vl, 0.0, vl),]
+        # Incluir ALIQUOTA = T01, ALTERAR = Sim, COMISSAO=Sim, ALIQUOTA_ICM=T00, UNITARIO=UN, CFOP=5405
+        # OCTS=500, STATUS=1, COD_AGREGADO=Não, SERVICOS=Não, ALTERADO=Sim, OR_CST=0
         cursor_fire.executemany("insert into EST_PRODUTO (REFERENCIAL, CODIGO, NOME, PRECO_CUSTO, MARGEM, PRECO_VENDA) values (?, ?, ?, ?, ?, ?)", prod)
         con_fire.commit()
 
