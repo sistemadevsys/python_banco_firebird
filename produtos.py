@@ -33,10 +33,10 @@ try:
     t_devsys = cursor_fire.fetchall()
 
     for id_ref, id_for, c_barras, nome_b, preco in t_banka:
-        # sem id fornecedor
-        prod = [(id_ref, c_barras, nome_b, preco, 0.0, preco, "Sim", 1),]
-        cursor_fire.executemany("""insert into EST_PRODUTO (REFERENCIAL, CODIGO, NOME, PRECO_CUSTO, MARGEM,
-                                PRECO_VENDA, ALTERAR, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?)""", prod)
+        # PRIMEIRO INSERIDO FORNECEDORES
+        prod = [(id_ref, id_for, c_barras, nome_b, preco, 0.0, preco, "Sim", 1),]
+        cursor_fire.executemany("""insert into EST_PRODUTO (REFERENCIAL, REF_FORNECEDOR, CODIGO, NOME, PRECO_CUSTO, MARGEM,
+                                PRECO_VENDA, ALTERAR, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?)""", prod)
         con_fire.commit()
 
     con_banka.close()
